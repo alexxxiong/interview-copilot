@@ -1,0 +1,81 @@
+{
+  "name": "interview-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexxxiong/interview-copilot.git"
+  },
+  "homepage": "https://github.com/alexxxiong/interview-copilot#readme",
+  "bugs": {
+    "url": "https://github.com/alexxxiong/interview-copilot/issues"
+  },
+  "type": "module",
+  "description": "循证面试助手：双路转写、检索与复核、置顶提示",
+  "main": "electron/main.mjs",
+  "scripts": {
+    "icons:build": "node scripts/make-icon.mjs",
+    "dev": "concurrently -k \"node --watch server/index.mjs\" \"vite --host 127.0.0.1\"",
+    "build": "tsc --noEmit && vite build",
+    "start": "npm run build && electron .",
+    "web": "npm run build && node server/index.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:live": "node scripts/live-check.mjs",
+    "setup:asr": "bash scripts/setup-asr.sh",
+    "package:mac": "npm run build && electron-builder --mac dir",
+    "test:audio": "node tests/audio-e2e.mjs",
+    "test:captions": "node scripts/live-captions-check.mjs",
+    "test:echo": "node scripts/live-captions-check.mjs --echo",
+    "format": "prettier --write src server electron tests scripts/*.mjs"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "concurrently": "^9.2.1",
+    "electron": "44.4.1",
+    "electron-builder": "^26.0.12",
+    "playwright": "^1.58.2",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "build": {
+    "appId": "local.interview.copilot",
+    "productName": "面试助手",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "server/**",
+      "electron/**",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": "-",
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "将你的发言转写为面试上下文。",
+        "NSAudioCaptureUsageDescription": "将会议中对方的声音转写为面试问题。",
+        "NSScreenCaptureUsageDescription": "采集电脑播放的会议音频以转写面试问题；不保存或上传屏幕画面。"
+      },
+      "icon": "assets/icon.icns"
+    }
+  }
+}
