@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/alexxxiong/interview-copilot/actions/workflows/ci.yml"><img src="https://github.com/alexxxiong/interview-copilot/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/platform-macOS-111827" alt="macOS" />
   <img src="https://img.shields.io/badge/Electron-44-47848F" alt="Electron 44" />
   <img src="https://img.shields.io/badge/Node.js-%E2%89%A522.12-339933" alt="Node.js 22.12 or later" />
@@ -204,4 +205,4 @@ CI 在干净检出中运行 `npm ci`、`npm test` 与 `npm run build`，不调�
 
 欢迎通过 [Issues](https://github.com/alexxxiong/interview-copilot/issues) 提供可复现的问题或建议。提交前运行 `npm test` 和 `npm run build`，不要提交 `.data/`、`artifacts/`、`release/`、`资料/`、真实录音或个人资料。
 
-当前仅公开代码，尚未附加开源许可证；第三方依赖遵循各自许可证。图标由内置图像生成工具制作，主稿及提示词见 [图标设计记录](assets/icon-design.md)。
+本项目采用 [MIT License](LICENSE)；第三方依赖遵循各自许可证。图标由内置图像生成工具制作，主稿及提示词见 [图标设计记录](assets/icon-design.md)。
